@@ -1,8 +1,0 @@
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.formField {
-  margin: 3em 0;
-}
