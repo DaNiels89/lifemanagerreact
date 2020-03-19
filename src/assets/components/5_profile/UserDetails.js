@@ -53,12 +53,12 @@ export default function UserInformation() {
   }
 
   function editProfile(id) {
-    fetch(`http://localhost:3001/profiles/${id}/edit.json`, {
+    fetch(`http://localhost:3001/profiles/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
-      //body: JSON.stringify({ profile: id })
+      // body: JSON.stringify({ user_id: id })
     })
       .then(response => response.json())
       .then(json => {
@@ -67,14 +67,9 @@ export default function UserInformation() {
   }
 
   function handleChange(event) {
-    setProfile({
-      ...profile,
-      firstname: event.target.value,
-      lastname: event.target.value,
-      gender: { value: event.target.value },
-      dob: event.target.value,
-      country: event.target.value
-    });
+    let profileCopy = { ...profile };
+    profileCopy[event.target.id] = event.target.value;
+    setProfile(profileCopy);
   }
 
   return (
@@ -125,7 +120,11 @@ export default function UserInformation() {
               <ErrorMessage error={errors.lastname} />
 
               <label>Gender</label>
-              <select name="gender" ref={register({ required: true })}>
+              <select
+                id="gender"
+                name="gender"
+                ref={register({ required: true })}
+              >
                 <option value="">Select...</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -159,7 +158,6 @@ export default function UserInformation() {
                 }}
                 inputRef={register()}
                 InputProps={{
-                  value: profile.lastname,
                   onChange: handleChange
                 }}
               />
@@ -169,7 +167,7 @@ export default function UserInformation() {
               <input
                 type="submit"
                 value="Edit"
-                onClick={() => editProfile(1)}
+                onClick={() => editProfile(1)} // Change the hardcoded 1 later
               />
               <input type="submit" value="Submit" />
             </form>

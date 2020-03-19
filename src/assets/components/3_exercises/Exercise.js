@@ -1,35 +1,29 @@
 import React from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
+import LeftPane from './layout/LeftPane';
+import RightPane from './layout/RightPane';
+import Footer from './layout/Footer';
 
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-
-const useStyles = makeStyles({
-  main: {
-    width: '100%'
-  }
-});
 
 // import '../../css/Exercise.css';
 
 const Exercise = () => {
-  const classes = useStyles();
   return (
     <Grid container>
-      <Grid item xs={3}>
-        <Paper className={classes.paper}></Paper>
-      </Grid>
+      <Grid item xs={3}></Grid>
       <Grid item xs={6}>
-        <Paper className={classes.paper}>
-          <div className="Exercise">
-            <h1>Hello Exercise</h1>
-          </div>
-        </Paper>
+        <Grid container>
+          <Grid item xs={6}>
+            <LeftPane />
+          </Grid>
+          <Grid item xs={6}>
+            <RightPane />
+          </Grid>
+        </Grid>
+        <Footer />
       </Grid>
-      <Grid item xs={3}>
-        <Paper className={classes.paper}></Paper>
-      </Grid>
+      <Grid item xs={3}></Grid>
     </Grid>
   );
 };
