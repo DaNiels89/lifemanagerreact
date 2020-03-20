@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { muscles, exercises } from '../store.js';
+
 import Paper from '@material-ui/core/Paper';
 
 import { makeStyles } from '@material-ui/core/styles';

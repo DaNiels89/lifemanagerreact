@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route
   // Link as RouterLink
 } from 'react-router-dom';
+import axios from 'axios';
 
 import HomePage from '../1_lifemanager/HomePage';
 import Food from '../2_food/Food';
 import Exercise from '../3_exercises/Exercise';
 import Finance from '../4_finances/Finance';
 import UserDetails from '../5_profile/UserDetails';
+import Login from '../../components/registrations/Login';
+import Signup from '../../components/registrations/Signup';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -33,8 +36,44 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
+
+  useEffect(() => loginStatus());
+
+  const handleLogin = data => {
+    setIsLoggedIn(true);
+    setUser(data.user);
+  };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUser({});
+  };
+
+  const handleClick = () => {
+    axios
+      .delete('http://localhost:3001/logout', { withCredentials: true })
+      .then(response => {
+        handleLogout();
+      })
+      .catch(error => console.log(error));
+  };
+
+  const loginStatus = () => {
+    axios
+      .get('http://localhost:3001/logged_in', { withCredentials: true })
+      .then(response => {
+        if (response.data.logged_in) {
+          handleLogin(response);
+        } else {
+          handleLogout();
+        }
+      })
+      .catch(error => console.log('api errors:', error));
+  };
 
   return (
     <Router>
@@ -74,8 +113,18 @@ export default function Header() {
                 Profile
               </Link>
             </Typography>
-            <Button color="inherit">Sign up</Button>
-            <Button color="inherit">Login</Button>
+            <Button href="/signup" color="inherit">
+              Sign up
+            </Button>
+            <Button href="/login" color="inherit">
+              Login
+            </Button>
+
+            {props.loggedInStatus ? (
+              <Button href="/logout" onClick={handleClick}>
+                Log Out
+              </Button>
+            ) : null}
           </Toolbar>
         </AppBar>
 
@@ -92,8 +141,26 @@ export default function Header() {
           <Route path="/profile">
             <UserDetails />
           </Route>
+          <Route exact path="/login">
+            <Login
+              {...props}
+              handleLogin={handleLogin}
+              loggedInStatus={isLoggedIn}
+            />
+          </Route>
+          <Route exact path="/signup">
+            <Signup
+              {...props}
+              handleLogin={handleLogin}
+              loggedInStatus={isLoggedIn}
+            />
+          </Route>
           <Route path="/">
-            <HomePage />
+            <HomePage
+              {...props}
+              handleLogout={handleLogout}
+              loggedInStatus={isLoggedIn}
+            />
           </Route>
         </Switch>
       </div>

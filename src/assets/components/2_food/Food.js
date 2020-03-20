@@ -49,10 +49,10 @@ const Food = () => {
 
   return (
     <Grid container>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <Paper className={classes.paper}></Paper>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={8}>
         <Paper className={classes.paper}>
           <div className="Food">
             <form onSubmit={getSearch} className="search-form">
@@ -80,7 +80,7 @@ const Food = () => {
           </div>
         </Paper>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <Paper className={classes.paper}></Paper>
       </Grid>
     </Grid>

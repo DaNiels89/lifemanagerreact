@@ -74,10 +74,10 @@ export default function UserInformation() {
 
   return (
     <Grid container>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <Paper className={classes.paper}></Paper>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={8}>
         <Paper className={classes.paper}>
           <div className="user-information">
             <h2>User Information</h2>
@@ -174,7 +174,7 @@ export default function UserInformation() {
           </div>
         </Paper>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <Paper className={classes.paper}></Paper>
       </Grid>
     </Grid>

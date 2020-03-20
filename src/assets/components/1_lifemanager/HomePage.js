@@ -18,10 +18,10 @@ export default function Main() {
 
   return (
     <Grid container>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <Paper className={classes.paper}></Paper>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={8}>
         <Paper className={classes.paper}>
           <h1>Life Manager</h1>
           <h2>Welcome on our home page</h2>
@@ -33,7 +33,7 @@ export default function Main() {
           </ul>
         </Paper>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <Paper className={classes.paper}></Paper>
       </Grid>
     </Grid>
