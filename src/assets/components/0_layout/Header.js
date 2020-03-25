@@ -42,7 +42,7 @@ export default function Header(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
-  useEffect(() => loginStatus());
+  useEffect(() => loginStatus(), []);
 
   const handleLogin = data => {
     setIsLoggedIn(true);
@@ -108,23 +108,26 @@ export default function Header(props) {
                 Finances
               </Link>
             </Typography>
-            <Typography variant="h6" className={classes.title}>
-              <Link href="/profile" color="inherit">
-                Profile
-              </Link>
-            </Typography>
-            <Button href="/signup" color="inherit">
-              Sign up
-            </Button>
-            <Button href="/login" color="inherit">
-              Login
-            </Button>
 
-            {props.loggedInStatus ? (
-              <Button href="/logout" onClick={handleClick}>
+            {isLoggedIn ? (
+              <Button href="/profile" color="inherit">
+                Profile
+              </Button>
+            ) : (
+              <Button href="/signup" color="inherit">
+                Sign up
+              </Button>
+            )}
+
+            {isLoggedIn ? (
+              <Button href="/logout" color="inherit" onClick={handleClick}>
                 Log Out
               </Button>
-            ) : null}
+            ) : (
+              <Button href="/login" color="inherit">
+                Login
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
 
@@ -139,7 +142,7 @@ export default function Header(props) {
             <Finance />
           </Route>
           <Route path="/profile">
-            <UserDetails />
+            <UserDetails user={user} />
           </Route>
           <Route exact path="/login">
             <Login

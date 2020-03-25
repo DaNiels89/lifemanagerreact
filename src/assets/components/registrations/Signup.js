@@ -23,9 +23,7 @@ export default function Signup(props) {
       .catch(error => console.log('api errors:', error));
   };
 
-  const redirect = () => {
-    props.history.push('/');
-  };
+  const redirect = () => {};
 
   const handleErrors = () => {
     return (

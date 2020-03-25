@@ -22,11 +22,17 @@ const useStyles = makeStyles({
   }
 });
 
-export default function UserInformation() {
+export default function UserInformation(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => createProfile(data);
 
   const classes = useStyles();
+
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [gender, setGender] = useState('');
+  const [dob, setDob] = useState('');
+  const [country, setCountry] = useState('');
 
   const [profile, setProfile] = useState({
     firstname: '',
@@ -37,10 +43,11 @@ export default function UserInformation() {
   });
 
   useEffect(() => {
-    editProfile(1);
+    editProfile(props.user.id);
   }, []);
 
   function createProfile(data) {
+    // axios instead of fetch
     fetch('http://localhost:3001/profiles', {
       method: 'POST',
       headers: {
@@ -53,6 +60,7 @@ export default function UserInformation() {
   }
 
   function editProfile(id) {
+    // axios instead of fetch
     fetch(`http://localhost:3001/profiles/`, {
       method: 'GET',
       headers: {
@@ -89,7 +97,7 @@ export default function UserInformation() {
                 className={classes.input}
                 InputProps={{
                   value: profile.firstname,
-                  onChange: handleChange
+                  onChange: handleChange // fat arrow function event => setUsername(event.target.value)
                 }}
                 label="First Name"
                 variant="outlined"

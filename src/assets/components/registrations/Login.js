@@ -41,9 +41,7 @@ class Login extends Component {
       })
       .catch(error => console.log('api errors:', error));
   };
-  redirect = () => {
-    this.props.history.push('/');
-  };
+  redirect = () => {};
   handleErrors = () => {
     return (
       <div>
