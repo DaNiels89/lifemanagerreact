@@ -25,7 +25,9 @@ export default function Main() {
         <Paper className={classes.paper}>
           <h1>Life Manager</h1>
           <h2>Welcome on our home page</h2>
-          <p>Get your life in order!</p>
+          <p>
+            Get your life in order! We will help you with the following topics:
+          </p>
           <ul>
             <li>Food</li>
             <li>Exercise</li>

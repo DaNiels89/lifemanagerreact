@@ -28,11 +28,11 @@ export default function UserInformation(props) {
 
   const classes = useStyles();
 
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [gender, setGender] = useState('');
-  const [dob, setDob] = useState('');
-  const [country, setCountry] = useState('');
+  // const [firstname, setFirstname] = useState('');
+  // const [lastname, setLastname] = useState('');
+  // const [gender, setGender] = useState('');
+  // const [dob, setDob] = useState('');
+  // const [country, setCountry] = useState('');
 
   const [profile, setProfile] = useState({
     firstname: '',

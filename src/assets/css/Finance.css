@@ -73,13 +73,14 @@ h4 {
   color: #c0392b;
 }
 
-label {
+.label-text,
+.label-number {
   display: inline-block;
   margin: 10px 0;
 }
 
-input[type='text'],
-input[type='number'] {
+.input-text,
+.input-number {
   border: 1px solid #dedede;
   border-radius: 2px;
   display: block;

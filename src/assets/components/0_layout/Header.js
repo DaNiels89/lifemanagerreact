@@ -9,7 +9,7 @@ import axios from 'axios';
 
 import HomePage from '../1_lifemanager/HomePage';
 import Food from '../2_food/Food';
-import Exercise from '../3_exercises/Exercise';
+import Exercises from '../3_exercises/Components/Exercises';
 import Finance from '../4_finances/Finance';
 import UserDetails from '../5_profile/UserDetails';
 import Login from '../../components/registrations/Login';
@@ -23,6 +23,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import { muscles, exercises } from '../3_exercises/store.js';
+
+import '../../css/Header.css';
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -136,7 +140,12 @@ export default function Header(props) {
             <Food />
           </Route>
           <Route path="/exercises">
-            <Exercise />
+            <Exercises
+              exercise={{}}
+              category={null}
+              exercises={exercises}
+              // onSelect={this.handleExerciseSelected}
+            />
           </Route>
           <Route path="/finances">
             <Finance />
