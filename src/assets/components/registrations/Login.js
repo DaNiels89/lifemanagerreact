@@ -28,7 +28,11 @@ class Login extends Component {
     };
 
     axios
-      .post('http://localhost:3001/login', { user }, { withCredentials: true })
+      .post(
+        'https://life-manager-bog.herokuapp.com/login',
+        { user },
+        { withCredentials: true }
+      )
       .then(response => {
         if (response.data.logged_in) {
           this.props.handleLogin(response.data);

@@ -59,7 +59,9 @@ export default function Header(props) {
 
   const handleClick = () => {
     axios
-      .delete('http://localhost:3001/logout', { withCredentials: true })
+      .delete('https://life-manager-bog.herokuapp.com/logout', {
+        withCredentials: true
+      })
       .then(response => {
         handleLogout();
       })
@@ -68,7 +70,9 @@ export default function Header(props) {
 
   const loginStatus = () => {
     axios
-      .get('http://localhost:3001/logged_in', { withCredentials: true })
+      .get('https://life-manager-bog.herokuapp.com/logged_in', {
+        withCredentials: true
+      })
       .then(response => {
         if (response.data.logged_in) {
           handleLogin(response);
@@ -140,12 +144,7 @@ export default function Header(props) {
             <Food />
           </Route>
           <Route path="/exercises">
-            <Exercises
-              exercise={{}}
-              category={null}
-              exercises={exercises}
-              // onSelect={this.handleExerciseSelected}
-            />
+            <Exercises />
           </Route>
           <Route path="/finances">
             <Finance />

@@ -11,7 +11,11 @@ export default function Signup(props) {
       password_confirmation: password_confirmation
     };
     axios
-      .post('http://localhost:3001/users', { user }, { withCredentials: true })
+      .post(
+        'https://life-manager-bog.herokuapp.com/users',
+        { user },
+        { withCredentials: true }
+      )
       .then(response => {
         if (response.data.status === 'created') {
           props.handleLogin(response.data);

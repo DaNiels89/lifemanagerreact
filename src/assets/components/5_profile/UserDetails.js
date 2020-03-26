@@ -48,7 +48,7 @@ export default function UserInformation(props) {
 
   function createProfile(data) {
     // axios instead of fetch
-    fetch('http://localhost:3001/profiles', {
+    fetch('https://life-manager-bog.herokuapp.com/profiles', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ export default function UserInformation(props) {
 
   function editProfile(id) {
     // axios instead of fetch
-    fetch(`http://localhost:3001/profiles/`, {
+    fetch(`https://life-manager-bog.herokuapp.com/profiles/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
